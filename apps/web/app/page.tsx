@@ -1,6 +1,6 @@
-import { BlankIntro } from "../components/site/blank-intro";
 import { Container } from "../components/site/container";
 import { DetailCardGrid, type DetailCardItem } from "../components/site/detail-card-grid";
+import { HeroSequence } from "../components/site/hero-sequence";
 
 const contact = {
   name: "Rithik Reddy Singireddy (21)",
@@ -170,7 +170,7 @@ const clubProjectItems: DetailCardItem[] = [
 export default function HomePage() {
   return (
     <main className="pb-24">
-      <BlankIntro />
+      <HeroSequence />
 
       <section id="about" className="scroll-mt-28 pt-24 pb-20">
         <Container>
