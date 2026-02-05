@@ -91,22 +91,24 @@ export function BlankIntro() {
   }, []);
 
   return (
-    <section ref={rootRef} id="top" className="relative h-screen bg-white">
+    <section ref={rootRef} id="top" className="relative h-screen bg-[var(--bg)]">
       <div className="pointer-events-none flex h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_60%)]" />
         <div className="relative px-6 text-center">
           <div className="relative">
             <div
               ref={plainNameRef}
-              className="font-serif text-[clamp(3.5rem,11vw,9rem)] leading-[0.9] tracking-tight text-black"
+              className="text-[clamp(3.25rem,10.6vw,8.5rem)] font-semibold leading-[0.9] tracking-tight text-[var(--text)]"
             >
               <div>Rithik</div>
               <div>Reddy</div>
-              <div className="text-[0.55em] leading-[1.05] tracking-tight">Singireddy (21)</div>
+              <div className="text-[0.55em] leading-[1.05] tracking-tight text-[var(--text-muted)]">
+                Singireddy (21)
+              </div>
             </div>
             <div
               ref={maskedNameRef}
-              className="absolute inset-0 opacity-0 font-serif text-[clamp(3.5rem,11vw,9rem)] leading-[0.9] tracking-tight text-transparent [background-image:var(--intro-photo)] bg-cover bg-center bg-no-repeat bg-clip-text"
+              className="absolute inset-0 opacity-0 text-[clamp(3.25rem,10.6vw,8.5rem)] font-semibold leading-[0.9] tracking-tight text-transparent [background-image:var(--intro-photo)] bg-cover bg-center bg-no-repeat bg-clip-text"
               style={{ "--intro-photo": `url(${photoUrl})` } as CSSProperties}
             >
               <div>Rithik</div>
@@ -117,7 +119,7 @@ export function BlankIntro() {
 
           <div
             ref={photoRef}
-            className="pointer-events-none mx-auto mt-14 w-[min(460px,86vw)] overflow-hidden rounded-2xl bg-neutral-100 shadow-[0_30px_80px_rgba(0,0,0,0.12)] opacity-0"
+            className="mg-card pointer-events-none mx-auto mt-14 w-[min(460px,86vw)] opacity-0"
           >
             <div className="aspect-[4/5]">
               <img alt="Portrait" src={photoUrl} className="h-full w-full object-cover" />
@@ -125,7 +127,7 @@ export function BlankIntro() {
           </div>
           <div
             ref={hintRef}
-            className="mt-10 text-[10px] tracking-[0.35em] text-neutral-500"
+            className="mg-label mt-10"
           >
             SCROLL
           </div>

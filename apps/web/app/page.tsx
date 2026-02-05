@@ -1,5 +1,6 @@
 import { BlankIntro } from "../components/site/blank-intro";
 import { Container } from "../components/site/container";
+import { DetailCardGrid, type DetailCardItem } from "../components/site/detail-card-grid";
 
 const contact = {
   name: "Rithik Reddy Singireddy (21)",
@@ -136,6 +137,36 @@ const skillGroups = [
   }
 ];
 
+const experienceItems: DetailCardItem[] = experiences.map((xp) => ({
+  id: `${xp.title}-${xp.org}`,
+  title: xp.title,
+  subtitle: xp.org,
+  meta: xp.dates,
+  bullets: xp.bullets,
+  tags: ["Experience"]
+}));
+
+const projectItems: DetailCardItem[] = projects.map((p) => ({
+  id: p.title,
+  title: p.title,
+  meta: p.dates,
+  stack: p.stack,
+  bullets: p.bullets,
+  tags: ["Project"]
+}));
+
+const clubProjectItems: DetailCardItem[] = [
+  {
+    id: "enigma-tech-society",
+    title: "Enigma Technical Society — Team Initiatives",
+    subtitle: "Software Development Head",
+    meta: "Jul 2023 – Jun 2024",
+    stack: "Leadership, delivery, mentoring, cross-functional coordination",
+    bullets: experiences.find((e) => e.title === "Software Development Head")?.bullets ?? [],
+    tags: ["Club", "Leadership"]
+  }
+];
+
 export default function HomePage() {
   return (
     <main className="pb-24">
@@ -145,9 +176,9 @@ export default function HomePage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:items-start">
             <section className="md:col-span-7">
-              <div className="text-xs tracking-[0.35em] text-neutral-500">ABOUT</div>
-              <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">{contact.name}</h2>
-              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-700">
+              <div className="mg-label">ABOUT</div>
+              <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">{contact.name}</h2>
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
                 Dedicated Software Engineering student at Monash University with a strong foundation
                 in Computer Science and Applied Mathematics. Experienced in full-cycle software
                 development including system automation, web application deployment, and
@@ -157,15 +188,15 @@ export default function HomePage() {
                 technical challenges.
               </p>
 
-              <div className="mt-10 grid grid-cols-1 gap-4 text-sm text-neutral-700 sm:grid-cols-2">
-                <div className="border border-black/5 bg-white p-5">
-                  <div className="text-xs tracking-[0.35em] text-neutral-500">LOCATION</div>
-                  <div className="mt-2 text-neutral-800">{contact.location}</div>
+              <div className="mt-10 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
+                <div className="mg-card px-5 py-5">
+                  <div className="mg-label">LOCATION</div>
+                  <div className="mt-2 text-[var(--text)]">{contact.location}</div>
                 </div>
-                <div className="border border-black/5 bg-white p-5">
-                  <div className="text-xs tracking-[0.35em] text-neutral-500">EMAIL</div>
+                <div className="mg-card px-5 py-5">
+                  <div className="mg-label">EMAIL</div>
                   <a
-                    className="mt-2 inline-block text-neutral-800 hover:text-black"
+                    className="mt-2 inline-block text-[var(--text)] hover:text-[var(--accent)]"
                     href={`mailto:${contact.email}`}
                   >
                     {contact.email}
@@ -175,54 +206,54 @@ export default function HomePage() {
             </section>
 
             <aside className="md:col-span-5">
-              <div className="overflow-hidden rounded-2xl bg-neutral-100">
+              <div className="mg-card">
                 <img
                   alt="Rithik portrait"
                   src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80"
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-4 text-xs tracking-[0.22em] text-neutral-500">
-                To use your photo in the intro, add <span className="text-neutral-700">apps/web/public/rithik.jpg</span>
+              <div className="mt-4 text-xs tracking-[0.22em] text-[var(--text-subtle)]">
+                To use your photo in the intro, add <span className="text-[var(--text-muted)]">apps/web/public/rithik.jpg</span>
               </div>
             </aside>
           </div>
         </Container>
       </section>
 
-      <section id="education" className="scroll-mt-28 pb-20">
+      <section id="education" className="scroll-mt-28 pb-20 bg-[var(--bg-alt)]">
         <Container>
-          <div className="text-xs tracking-[0.35em] text-neutral-500">EDUCATION</div>
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Education</h2>
+          <div className="mg-label">EDUCATION</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Education</h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6">
-            <div className="border border-black/5 bg-white p-6">
+            <div className="mg-card p-6">
               <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                <div className="text-lg font-medium text-neutral-900">
+                <div className="text-lg font-medium text-[var(--text)]">
                   Bachelor of Software Engineering (Honours)
                 </div>
-                <div className="text-sm text-neutral-600">Monash University · 4th year</div>
+                <div className="text-sm text-[var(--text-muted)]">Monash University · 4th year</div>
               </div>
             </div>
 
-            <div className="border border-black/5 bg-white p-6">
+            <div className="mg-card p-6">
               <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                <div className="text-lg font-medium text-neutral-900">
+                <div className="text-lg font-medium text-[var(--text)]">
                   B.Sc. (Applied Sciences) in Computer Science and Engineering
                 </div>
-                <div className="text-sm text-neutral-600">ICAS MAHE · 2022–2024</div>
+                <div className="text-sm text-[var(--text-muted)]">ICAS MAHE · 2022–2024</div>
               </div>
-              <div className="mt-2 text-sm text-neutral-700">CGPA: 3.82/4.00 (transferred to Monash)</div>
+              <div className="mt-2 text-sm text-[var(--text-muted)]">CGPA: 3.82/4.00 (transferred to Monash)</div>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="border border-black/5 bg-white p-6">
-                <div className="text-sm tracking-[0.22em] text-neutral-500">GRADE 12</div>
-                <div className="mt-2 text-lg font-medium text-neutral-900">98.2%</div>
+              <div className="mg-card p-6">
+                <div className="text-sm tracking-[0.22em] text-[var(--text-subtle)]">GRADE 12</div>
+                <div className="mt-2 text-lg font-medium text-[var(--text)]">98.2%</div>
               </div>
-              <div className="border border-black/5 bg-white p-6">
-                <div className="text-sm tracking-[0.22em] text-neutral-500">GRADE 10</div>
-                <div className="mt-2 text-lg font-medium text-neutral-900">93.8%</div>
+              <div className="mg-card p-6">
+                <div className="text-sm tracking-[0.22em] text-[var(--text-subtle)]">GRADE 10</div>
+                <div className="mt-2 text-lg font-medium text-[var(--text)]">93.8%</div>
               </div>
             </div>
           </div>
@@ -231,72 +262,61 @@ export default function HomePage() {
 
       <section id="experience" className="scroll-mt-28 pb-20">
         <Container>
-          <div className="text-xs tracking-[0.35em] text-neutral-500">EXPERIENCE</div>
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Experience</h2>
+          <div className="mg-label">EXPERIENCE</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Experience</h2>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
+            Concise highlights. Click any card to view the full detail.
+          </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6">
-            {experiences.map((xp) => (
-              <div key={xp.title + xp.org} className="border border-black/5 bg-white p-6">
-                <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                  <div>
-                    <div className="text-lg font-medium text-neutral-900">{xp.title}</div>
-                    <div className="text-sm text-neutral-700">{xp.org}</div>
-                  </div>
-                  <div className="text-sm text-neutral-600">{xp.dates}</div>
-                </div>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-700">
-                  {xp.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="mt-10">
+            <DetailCardGrid items={experienceItems} columns={2} />
           </div>
         </Container>
       </section>
 
-      <section id="projects" className="scroll-mt-28 pb-20">
+      <section id="projects" className="scroll-mt-28 pb-20 bg-[var(--bg-alt)]">
         <Container>
-          <div className="text-xs tracking-[0.35em] text-neutral-500">PROJECTS</div>
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Projects</h2>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-700">
+          <div className="mg-label">PROJECTS</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Projects</h2>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
             A selection of work across full-stack platforms, automation, and systems built with
             strong engineering fundamentals and a focus on scalability.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6">
-            {projects.map((p) => (
-              <article key={p.title} className="border border-black/5 bg-white p-6">
-                <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                  <h3 className="text-lg font-medium text-neutral-900">{p.title}</h3>
-                  <div className="text-sm text-neutral-600">{p.dates}</div>
-                </div>
-                <div className="mt-2 text-sm text-neutral-700">{p.stack}</div>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-700">
-                  {p.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+          <div className="mt-10">
+            <DetailCardGrid items={projectItems} columns={2} />
           </div>
         </Container>
       </section>
 
-      <section id="skills" className="scroll-mt-28 pb-20">
+      <section id="club" className="scroll-mt-28 pb-20">
         <Container>
-          <div className="text-xs tracking-[0.35em] text-neutral-500">SKILLS</div>
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Skills</h2>
+          <div className="mg-label">CLUB PROJECTS</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Club projects</h2>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
+            A concise view of club work and leadership initiatives. Click to open a detailed view.
+          </p>
+
+          <div className="mt-10">
+            <DetailCardGrid items={clubProjectItems} columns={2} />
+          </div>
+        </Container>
+      </section>
+
+      <section id="skills" className="scroll-mt-28 pb-20 bg-[var(--bg-alt)]">
+        <Container>
+          <div className="mg-label">SKILLS</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Skills</h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
             {skillGroups.map((g) => (
-              <div key={g.label} className="border border-black/5 bg-white p-6">
-                <div className="text-xs tracking-[0.35em] text-neutral-500">{g.label}</div>
+              <div key={g.label} className="mg-card p-6">
+                <div className="mg-label">{g.label}</div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {g.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-neutral-700"
+                      className="rounded-full border border-[var(--border)] bg-transparent px-3 py-1 text-xs text-[var(--text-muted)]"
                     >
                       {item}
                     </span>
@@ -310,40 +330,53 @@ export default function HomePage() {
 
       <section id="contact" className="scroll-mt-28 pb-24">
         <Container>
-          <div className="text-xs tracking-[0.35em] text-neutral-500">CONTACT</div>
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Let’s talk</h2>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-700">
+          <div className="mg-label">CONTACT</div>
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Let’s talk</h2>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[var(--text-muted)]">
             Reach out for internships, full-time roles, freelance work, or collaboration on
             engineering projects.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="border border-black/5 bg-white p-6">
-              <div className="text-xs tracking-[0.35em] text-neutral-500">EMAIL</div>
-              <a className="mt-2 inline-block text-sm text-neutral-800 hover:text-black" href={`mailto:${contact.email}`}>
+            <div className="mg-card p-6">
+              <div className="mg-label">EMAIL</div>
+              <a
+                className="mt-2 inline-block text-sm text-[var(--text)] hover:text-[var(--accent)]"
+                href={`mailto:${contact.email}`}
+              >
                 {contact.email}
               </a>
-              <div className="mt-6 text-xs tracking-[0.35em] text-neutral-500">LOCATION</div>
-              <div className="mt-2 text-sm text-neutral-800">{contact.location}</div>
+              <div className="mt-6">
+                <div className="mg-label">LOCATION</div>
+                <div className="mt-2 text-sm text-[var(--text)]">{contact.location}</div>
+              </div>
             </div>
 
-            <div className="border border-black/5 bg-white p-6">
-              <div className="text-xs tracking-[0.35em] text-neutral-500">PHONE</div>
+            <div className="mg-card p-6">
+              <div className="mg-label">PHONE</div>
               <div className="mt-2 space-y-2 text-sm">
-                <a className="block text-neutral-800 hover:text-black" href={`tel:${contact.phoneAu.replace(/\s/g, "")}`}>
+                <a
+                  className="block text-[var(--text)] hover:text-[var(--accent)]"
+                  href={`tel:${contact.phoneAu.replace(/\s/g, "")}`}
+                >
                   {contact.phoneAu}
                 </a>
-                <a className="block text-neutral-800 hover:text-black" href={`tel:${contact.phoneIn.replace(/\s/g, "")}`}>
+                <a
+                  className="block text-[var(--text)] hover:text-[var(--accent)]"
+                  href={`tel:${contact.phoneIn.replace(/\s/g, "")}`}
+                >
                   {contact.phoneIn}
                 </a>
               </div>
 
-              <div className="mt-6 text-xs tracking-[0.35em] text-neutral-500">NAME</div>
-              <div className="mt-2 text-sm text-neutral-800">{contact.name}</div>
+              <div className="mt-6">
+                <div className="mg-label">NAME</div>
+                <div className="mt-2 text-sm text-[var(--text)]">{contact.name}</div>
+              </div>
             </div>
           </div>
 
-          <div className="mt-14 text-xs tracking-[0.22em] text-neutral-500">© {contact.name}</div>
+          <div className="mt-14 text-xs tracking-[0.22em] text-[var(--text-subtle)]">© {contact.name}</div>
         </Container>
       </section>
     </main>
