@@ -18,13 +18,19 @@ export function SiteNav() {
               HOME
             </Link>
             <Link href="/#about" className="hover:text-black">
-              BIO
+              ABOUT
             </Link>
-            <Link href="/#work" className="hover:text-black">
-              WORK
+            <Link href="/#education" className="hover:text-black">
+              EDUCATION
             </Link>
-            <Link href="/#logos" className="hover:text-black">
-              LOGOS
+            <Link href="/#experience" className="hover:text-black">
+              EXPERIENCE
+            </Link>
+            <Link href="/#projects" className="hover:text-black">
+              PROJECTS
+            </Link>
+            <Link href="/#skills" className="hover:text-black">
+              SKILLS
             </Link>
             <Link href="/#contact" className="hover:text-black">
               CONTACT

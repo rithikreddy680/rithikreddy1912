@@ -53,6 +53,10 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       scrollToHash(window.location.hash);
     };
 
+    const onPopState = () => {
+      scrollToHash(window.location.hash);
+    };
+
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
       const anchor = target?.closest("a") as HTMLAnchorElement | null;
@@ -74,6 +78,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     };
 
     window.addEventListener("hashchange", onHashChange);
+    window.addEventListener("popstate", onPopState);
     document.addEventListener("click", onClick);
 
     requestAnimationFrame(() => {
@@ -84,6 +89,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     return () => {
       window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("popstate", onPopState);
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(rafId);
       lenis.destroy();
