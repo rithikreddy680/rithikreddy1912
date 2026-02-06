@@ -4,6 +4,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { portfolioData } from "@/lib/data";
+import { MainContent } from "@/components/main-content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,17 +48,15 @@ export default function HomePage() {
   );
 
   return (
-    <main ref={rootRef} className="bg-white text-black">
+    <main ref={rootRef} className="bg-slate-950 text-white">
       {/* Part 1: Vertical name section */}
       <section className="flex h-screen w-full flex-col justify-between px-10 py-10 sm:px-16 sm:py-16 lg:px-24">
         <header>
           <p className="mb-8 text-xs tracking-[0.35em] text-neutral-500">
-            RITHIK REDDY
+            {portfolioData.hero.name.toUpperCase()}
           </p>
           <h1 className="font-serif text-5xl leading-tight sm:text-6xl md:text-7xl">
-            Building products at the
-            <br />
-            intersection of design &amp; data
+            {portfolioData.hero.tagline}
           </h1>
         </header>
       </section>
@@ -68,34 +68,32 @@ export default function HomePage() {
           className="flex h-full w-[200vw] flex-row"
         >
           {/* Slide A: Photo + hint */}
-          <section className="flex h-screen w-screen items-center justify-between bg-white px-10 sm:px-16 lg:px-24">
-            <div className="flex h-[80%] w-[60%] items-center justify-center rounded-lg bg-neutral-200 shadow-xl">
-              <span className="text-xs uppercase tracking-[0.2em] text-neutral-500">
+          <section className="flex h-screen w-screen items-center justify-between bg-slate-950 px-10 sm:px-16 lg:px-24">
+            <div className="flex h-[80%] w-[60%] items-center justify-center rounded-lg bg-neutral-900 shadow-xl">
+              <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">
                 IMAGE AREA
               </span>
             </div>
             <div
               ref={hintRef}
-              className="text-xs tracking-[0.3em] text-neutral-500"
+              className="text-xs tracking-[0.3em] text-neutral-400"
             >
               Scroll to Explore →
             </div>
           </section>
 
           {/* Slide B: Details */}
-          <section className="flex h-screen w-screen flex-col justify-between bg-white px-10 py-10 sm:px-16 sm:py-16 lg:px-24">
+          <section className="flex h-screen w-screen flex-col justify-between bg-slate-950 px-10 py-10 sm:px-16 sm:py-16 lg:px-24">
             <header>
-              <p className="mb-8 text-xs tracking-[0.35em] text-neutral-500">
-                ABOUT RITHIK
+              <p className="mb-8 text-xs tracking-[0.35em] text-neutral-400">
+                ABOUT
               </p>
               <h2 className="font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
-                Software Engineer
-                <br />
-                &amp; Data Storyteller
+                {portfolioData.hero.title}
               </h2>
             </header>
 
-            <footer className="mt-10 flex flex-col items-start justify-between gap-6 text-[11px] tracking-[0.2em] text-neutral-600 sm:flex-row sm:items-center">
+            <footer className="mt-10 flex flex-col items-start justify-between gap-6 text-[11px] tracking-[0.2em] text-neutral-400 sm:flex-row sm:items-center">
               <span>ENGINEER &amp; PROBLEM SOLVER</span>
               <button
                 type="button"
@@ -108,6 +106,8 @@ export default function HomePage() {
           </section>
         </div>
       </div>
+
+      <MainContent />
     </main>
   );
 }
